@@ -23,11 +23,11 @@ services:
 
   frontend:
     container_name: frontend
-    build: ./frontend
+    build: .
     ports:
         - "3000:3000"
     volumes:
-        - ./frontend:/app:rw
+        - .:/app:rw
     env_file:
         - .env
     depends_on:
