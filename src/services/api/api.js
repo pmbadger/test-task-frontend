@@ -3,7 +3,7 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../utils/consts";
 import { tokenRefresh } from "./auth";
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_BACKEND_URL,
+    baseURL: "https://test-task-backend-stage.us.aldryn.io/",
 });
 
 api.interceptors.request.use(
