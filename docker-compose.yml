@@ -23,7 +23,9 @@ services:
 
   frontend:
     container_name: frontend
-    build: .
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
     ports:
         - "3000:3000"
     volumes:
