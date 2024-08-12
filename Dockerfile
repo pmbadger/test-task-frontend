@@ -1,8 +1,11 @@
 FROM node:16.13.2-alpine as build
 WORKDIR /app
-COPY package*.json /app/
+COPY package.json ./
+COPY package-lock.json ./
 RUN npm install
-COPY . /app
+COPY . .
 RUN npm run build
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
-CMD ["npm", "run", "start"]
+CMD ["nginx", "-g", "daemon off;"]
