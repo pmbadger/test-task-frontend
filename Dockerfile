@@ -1,7 +1,8 @@
-# build step
 FROM node:16.13.2-alpine as build
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json /app/
 RUN npm install
-COPY . .
+COPY . /app
 RUN npm run build
+EXPOSE 80
+CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0", "--port", "80"]
